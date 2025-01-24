@@ -8,8 +8,8 @@
 		<version>3.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.sconexsoft.ecom</groupId>
-	<artifactId>EcomProject</artifactId>
+	<groupId>com.sconexsoft</groupId>
+	<artifactId>ecom-mgmt</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpringAPI</name>
 	<description>Spring Boot project</description>
@@ -27,7 +27,7 @@
 		<url/>
 	</scm>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
