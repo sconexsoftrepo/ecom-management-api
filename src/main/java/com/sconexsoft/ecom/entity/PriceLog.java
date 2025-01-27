@@ -14,7 +14,7 @@ public class PriceLog {
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
-    private Product product;
+    private Product productId;
 
     private Double price;
     private LocalDateTime updateDateTime;
@@ -24,10 +24,10 @@ public class PriceLog {
 	}
     
     // parameterized constructor
-	public PriceLog(Long logId, Product product, Double price, LocalDateTime updateDateTime) {
+	public PriceLog(Long logId, Product productId, Double price, LocalDateTime updateDateTime) {
 		super();
 		this.logId = logId;
-		this.product = product;
+		this.productId = productId;
 		this.price = price;
 		this.updateDateTime = updateDateTime;
 	}
@@ -42,11 +42,11 @@ public class PriceLog {
 	}
 	
 	public Product getProduct() {
-		return product;
+		return productId;
 	}
 	
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setProduct(Product productId) {
+		this.productId = productId;
 	}
 	
 	public Double getPrice() {
@@ -67,7 +67,7 @@ public class PriceLog {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(logId, price, product, updateDateTime);
+		return Objects.hash(logId, price, productId, updateDateTime);
 	}
 
 	@Override
@@ -80,12 +80,12 @@ public class PriceLog {
 			return false;
 		PriceLog other = (PriceLog) obj;
 		return Objects.equals(logId, other.logId) && Objects.equals(price, other.price)
-				&& Objects.equals(product, other.product) && Objects.equals(updateDateTime, other.updateDateTime);
+				&& Objects.equals(productId, other.productId) && Objects.equals(updateDateTime, other.updateDateTime);
 	}
 
 	@Override
 	public String toString() {
-		return "PriceLog [logId=" + logId + ", product=" + product + ", price=" + price + ", updateDateTime="
+		return "PriceLog [logId=" + logId + ", product=" + productId + ", price=" + price + ", updateDateTime="
 				+ updateDateTime + "]";
 	}
 

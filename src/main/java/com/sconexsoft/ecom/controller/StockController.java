@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/stocks")
+@RequestMapping("/stocks")
 public class StockController {
 
     @Autowired
@@ -98,11 +98,11 @@ public class StockController {
     }
 
     // Endpoint to get ProductOutStockTrans by Product ID
-    @GetMapping("/out/product/{productId}")
-    public ResponseEntity<List<ProductOutStockTran>> getProductOutStockByProductId(@PathVariable Long productId) {
-        List<ProductOutStockTran> outStocks = productOutStockTranService.getProductOutStockTransByProductId(productId);
-        return ResponseEntity.ok(outStocks);
-    }
+//    @GetMapping("/out/product/{productId}")
+//    public ResponseEntity<List<ProductOutStockTran>> getProductOutStockByProductId(@PathVariable Long productId) {
+//        List<ProductOutStockTran> outStocks = productOutStockTranService.getProductOutStockTransByProductId(productId);
+//        return ResponseEntity.ok(outStocks);
+//    }
 
     // Endpoint to get ProductInStockTrans by Dealer ID
     @GetMapping("/in/dealer/{dealerId}")
@@ -112,9 +112,9 @@ public class StockController {
     }
 
     // Endpoint to get ProductOutStockTrans by Dealer ID
-    @GetMapping("/out/dealer/{dealerId}")
-    public ResponseEntity<List<ProductOutStockTran>> getProductOutStockByDealerId(@PathVariable Long dealerId) {
-        List<ProductOutStockTran> outStocks = productOutStockTranService.getProductOutStockTransByDealerId(dealerId);
-        return ResponseEntity.ok(outStocks);
-    }
+//    @GetMapping("/out/dealer/{dealerId}")
+//    public ResponseEntity<List<ProductOutStockTran>> getProductOutStockByDealerId(@PathVariable Long dealerId) {
+//        List<ProductOutStockTran> outStocks = productOutStockTranService.getProductOutStockTransByDealerId(dealerId);
+//        return ResponseEntity.ok(outStocks);
+//    }
 }

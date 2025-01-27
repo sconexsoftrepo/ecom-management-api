@@ -1,92 +1,83 @@
 package com.sconexsoft.ecom.entity;
 
-import java.util.Objects;
-
 import jakarta.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "product_outstock")
 public class ProductOutStockTran {
-	
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "tran_id")
     private Long tranId;
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
+    @Column(name = "quantity")
+    private int quantity;
+
     @ManyToOne
     @JoinColumn(name = "dealer_id", nullable = false)
-    private Dealer dealer;
+    private Dealer dealer; // Assuming a Dealer entity exists
 
-    private Integer outstock;
-
+    // Default constructor
     public ProductOutStockTran() {
     }
-    
-	public ProductOutStockTran(Long tranId, Product product, Dealer dealer, Integer outstock) {
-		super();
-		this.tranId = tranId;
-		this.product = product;
-		this.dealer = dealer;
-		this.outstock = outstock;
-	}
-	
-	// Getters and Setters
-	public Long getTranId() {
-		return tranId;
-	}
 
-	public void setTranId(Long tranId) {
-		this.tranId = tranId;
-	}
+    // Getters and Setters
+    public Long getTranId() {
+        return tranId;
+    }
 
-	public Product getProduct() {
-		return product;
-	}
+    public void setTranId(Long tranId) {
+        this.tranId = tranId;
+    }
 
-	public void setProduct(Product product) {
-		this.product = product;
-	}
+    public Product getProduct() {
+        return product;
+    }
 
-	public Dealer getDealer() {
-		return dealer;
-	}
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
-	public void setDealer(Dealer dealer) {
-		this.dealer = dealer;
-	}
+    public int getQuantity() {
+        return quantity;
+    }
 
-	public Integer getOutstock() {
-		return outstock;
-	}
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
-	public void setOutstock(Integer outstock) {
-		this.outstock = outstock;
-	}
+    public Dealer getDealer() {
+        return dealer;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(dealer, outstock, product, tranId);
-	}
+    public void setDealer(Dealer dealer) {
+        this.dealer = dealer;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ProductOutStockTran other = (ProductOutStockTran) obj;
-		return Objects.equals(dealer, other.dealer) && Objects.equals(outstock, other.outstock)
-				&& Objects.equals(product, other.product) && Objects.equals(tranId, other.tranId);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(tranId, product, quantity, dealer);
+    }
 
-	@Override
-	public String toString() {
-		return "ProductOutStockTran [tranId=" + tranId + ", product=" + product + ", dealer=" + dealer
-				+ ", outstock=" + outstock + "]";
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        ProductOutStockTran other = (ProductOutStockTran) obj;
+        return Objects.equals(tranId, other.tranId) &&
+               Objects.equals(product, other.product) &&
+               quantity == other.quantity &&
+               Objects.equals(dealer, other.dealer);
+    }
+
+    @Override
+    public String toString() {
+        return "ProductOutStockTran [tranId=" + tranId + ", product=" + product + ", quantity=" + quantity + ", dealer=" + dealer + "]";
+    }
 }

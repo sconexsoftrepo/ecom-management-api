@@ -3,29 +3,23 @@ package com.sconexsoft.ecom.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import java.util.List;
 
 @Entity
-@DiscriminatorValue("DEALER") // Distinguishes records in the single-table hierarchy
+@DiscriminatorValue("DEALER")
 public class Dealer extends EcomUser {
 
     @Column(name = "title", nullable = false, length = 100)
-    private String title; // Dealer-specific title
+    private String title;
 
     @Column(name = "priority", nullable = false)
-    private int priority; // Dealer priority
-
-    @OneToMany(mappedBy = "dealer")
-    private List<DealerPriorityLog> priorityLogs; // Bidirectional relationship to DealerPriorityLog
+    private int priority;
 
     // Default Constructor
     public Dealer() {
     }
 
     // Parameterized Constructor
-    public Dealer(int userId, String firstName, String lastName, String mobile, String mailId, String password, Role role, String title, int priority) {
-        super(userId, firstName, lastName, mobile, mailId, password, role); // Calls the parent constructor
+    public Dealer(String title, int priority) {
         this.title = title;
         this.priority = priority;
     }
@@ -45,14 +39,6 @@ public class Dealer extends EcomUser {
 
     public void setPriority(int priority) {
         this.priority = priority;
-    }
-
-    public List<DealerPriorityLog> getPriorityLogs() {
-        return priorityLogs;
-    }
-
-    public void setPriorityLogs(List<DealerPriorityLog> priorityLogs) {
-        this.priorityLogs = priorityLogs;
     }
 
     @Override

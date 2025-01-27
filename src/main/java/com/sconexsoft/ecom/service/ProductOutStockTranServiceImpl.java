@@ -45,13 +45,13 @@ public class ProductOutStockTranServiceImpl implements ProductOutStockTranServic
         productOutStockTranRepository.deleteById(tranId);
     }
 
-    @Override
-    public List<ProductOutStockTran> getProductOutStockTransByProductId(Long productId) {
-        return productOutStockTranRepository.findByProduct_ProductId(productId);
-    }
-
-    @Override
-    public List<ProductOutStockTran> getProductOutStockTransByDealerId(Long dealerId) {
-        return productOutStockTranRepository.findByDealer_UserId(dealerId);
-    }
+//    @Override
+//    public List<ProductOutStockTran> getProductOutStockTransByProductId(Long productId) {
+//        return productOutStockTranRepository.findByProductId(productId);
+//    }
+//
+//    @Override
+//    public List<ProductOutStockTran> getProductOutStockTransByDealerId(Long dealerId) {
+//        return productOutStockTranRepository.findByDealerId(dealerId);
+//    }
 }
