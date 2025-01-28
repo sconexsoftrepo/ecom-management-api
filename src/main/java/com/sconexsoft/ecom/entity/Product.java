@@ -2,6 +2,7 @@ package com.sconexsoft.ecom.entity;
 
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,22 +15,24 @@ import jakarta.persistence.Table;
 @Table(name = "products_table")
 public class Product {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Automatically generates IDs
-    private Long productId;
+	 @Id
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @Column(name = "product_id")
+	 private Long productId;
 
     private String name;
+
     private int price;
 
-    @ManyToOne // Many products can belong to one category
-    @JoinColumn(name = "category_id")
-    private Category category; // Renamed to 'category' for better semantics
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category; // Many products belong to one category
 
-    // Default Constructor
+    // Default constructor
     public Product() {
     }
 
-    // Constructor using fields
+    // Parameterized constructor
     public Product(Long productId, String name, int price, Category category) {
         this.productId = productId;
         this.name = name;
@@ -70,24 +73,22 @@ public class Product {
         this.category = category;
     }
 
-    // Override hashCode and equals for proper entity comparison
     @Override
     public int hashCode() {
-        return Objects.hash(category, name, price, productId);
+        return Objects.hash(productId, name, price, category);
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null || getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
         Product other = (Product) obj;
-        return Objects.equals(category, other.category) && Objects.equals(name, other.name)
-                && price == other.price && Objects.equals(productId, other.productId);
+        return Objects.equals(productId, other.productId) &&
+               Objects.equals(name, other.name) &&
+               price == other.price &&
+               Objects.equals(category, other.category);
     }
 
-    // toString method
     @Override
     public String toString() {
         return "Product [productId=" + productId + ", name=" + name + ", price=" + price + ", category=" + category + "]";

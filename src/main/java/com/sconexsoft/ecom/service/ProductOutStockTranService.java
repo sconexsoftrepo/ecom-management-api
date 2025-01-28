@@ -21,8 +21,8 @@ public interface ProductOutStockTranService {
     void deleteProductOutStockTran(Long tranId);
 
     // Get all product out-stock transactions for a specific product
-    List<ProductOutStockTran> getProductOutStockTransByProductId(Long productId);
-
-    // Get all product out-stock transactions for a specific dealer
-    List<ProductOutStockTran> getProductOutStockTransByDealerId(Long dealerId);
+//    List<ProductOutStockTran> getProductOutStockTransByProductId(Long productId);
+//
+//    // Get all product out-stock transactions for a specific dealer
+//    List<ProductOutStockTran> getProductOutStockTransByDealerId(Long dealerId);
 }

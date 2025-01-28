@@ -1,11 +1,12 @@
 package com.sconexsoft.ecom.service;
 
-import com.sconexsoft.ecom.entity.ProductInStockTran;
-import com.sconexsoft.ecom.repo.ProductInStockTranRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.sconexsoft.ecom.entity.ProductInStockTran;
+import com.sconexsoft.ecom.repo.ProductInStockTranRepository;
 
 @Service
 public class ProductInStockTranServiceImpl implements ProductInStockTranService {
@@ -47,11 +48,11 @@ public class ProductInStockTranServiceImpl implements ProductInStockTranService 
 
     @Override
     public List<ProductInStockTran> getProductInStockTransByProductId(Long productId) {
-        return productInStockTranRepository.findByProduct_ProductId(productId);
+        return productInStockTranRepository.findByProductId_ProductId(productId);
     }
 
     @Override
     public List<ProductInStockTran> getProductInStockTransByDealerId(Long dealerId) {
-        return productInStockTranRepository.findByDealer_UserId(dealerId);
+        return productInStockTranRepository.findByDealerId_UserId(dealerId);
     }
 }

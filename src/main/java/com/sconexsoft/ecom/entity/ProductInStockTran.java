@@ -8,17 +8,17 @@ import jakarta.persistence.*;
 @Table(name = "product_instock")
 public class ProductInStockTran {
 	
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long tranId;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
-    private Product product;
+	@ManyToOne
+	@JoinColumn(name = "product_id", nullable = false) // Maps to the column "product_id" in the database
+	private Product productId;
 
     @ManyToOne
     @JoinColumn(name = "dealer_id")
-    private Dealer dealer;
+    private Dealer dealerId;
 
     private Integer instock;
     
@@ -28,11 +28,11 @@ public class ProductInStockTran {
 	}
 
 	//parameterized Constructor
-    public ProductInStockTran(Long tranId, Product product, Dealer dealer, Integer instock) {
+    public ProductInStockTran(Long tranId, Product productId, Dealer dealerId, Integer instock) {
 		super();
 		this.tranId = tranId;
-		this.product = product;
-		this.dealer = dealer;
+		this.productId = productId;
+		this.dealerId = dealerId;
 		this.instock = instock;
 	}
 
@@ -46,19 +46,19 @@ public class ProductInStockTran {
 	}
 
 	public Product getProduct() {
-		return product;
+		return productId;
 	}
 
 	public void setProduct(Product product) {
-		this.product = product;
+		this.productId = product;
 	}
 
 	public Dealer getDealer() {
-		return dealer;
+		return dealerId;
 	}
 
 	public void setDealer(Dealer dealer) {
-		this.dealer = dealer;
+		this.dealerId = dealer;
 	}
 
 	public Integer getInstock() {
@@ -71,7 +71,7 @@ public class ProductInStockTran {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(dealer, instock, product, tranId);
+		return Objects.hash(dealerId, instock, productId, tranId);
 	}
 
 	@Override
@@ -83,13 +83,13 @@ public class ProductInStockTran {
 		if (getClass() != obj.getClass())
 			return false;
 		ProductInStockTran other = (ProductInStockTran) obj;
-		return Objects.equals(dealer, other.dealer) && Objects.equals(instock, other.instock)
-				&& Objects.equals(product, other.product) && Objects.equals(tranId, other.tranId);
+		return Objects.equals(dealerId, other.dealerId) && Objects.equals(instock, other.instock)
+				&& Objects.equals(productId, other.productId) && Objects.equals(tranId, other.tranId);
 	}
 
 	@Override
 	public String toString() {
-		return "ProductInStockTran [tranId=" + tranId + ", product=" + product + ", dealer=" + dealer
+		return "ProductInStockTran [tranId=" + tranId + ", product=" + productId + ", dealer=" + dealerId
 				+ ", instock=" + instock + "]";
 	}
     
