@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.sconexsoft.ecom.entity.Category;
 import com.sconexsoft.ecom.repo.CategoryRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
@@ -26,11 +28,13 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    @Transactional
     public Category addCategory(Category category) {
         return categoryRepo.save(category);
     }
 
     @Override
+    @Transactional
     public Category updateCategory(Category category) {
         if (categoryRepo.existsById(category.getId())) {
             return categoryRepo.save(category);
@@ -39,6 +43,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    @Transactional
     public boolean deleteCategory(Long id) {
         if (categoryRepo.existsById(id)) {
             categoryRepo.deleteById(id);

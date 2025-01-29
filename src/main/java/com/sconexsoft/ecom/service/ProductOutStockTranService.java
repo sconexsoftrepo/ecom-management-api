@@ -6,7 +6,7 @@ import java.util.List;
 public interface ProductOutStockTranService {
 
     // Create a new product out-stock transaction
-    ProductOutStockTran createProductOutStockTran(ProductOutStockTran productOutStockTran);
+    ProductOutStockTran addProductOutStockTran(ProductOutStockTran productOutStockTran);
 
     // Get a product out-stock transaction by its ID
     ProductOutStockTran getProductOutStockTranById(Long tranId);

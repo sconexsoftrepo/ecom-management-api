@@ -1,6 +1,7 @@
 package com.sconexsoft.ecom.service;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +9,8 @@ import com.sconexsoft.ecom.entity.Dealer;
 import com.sconexsoft.ecom.entity.DealerPriorityLog;
 import com.sconexsoft.ecom.repo.DealerPriorityLogRepository;
 import com.sconexsoft.ecom.repo.DealerRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class DealerPriorityLogServiceImpl implements DealerPriorityLogService {
@@ -19,7 +22,8 @@ public class DealerPriorityLogServiceImpl implements DealerPriorityLogService {
     private DealerRepository dealerRepository;
 
     @Override
-    public DealerPriorityLog createPriorityLog(DealerPriorityLog dealerPriorityLog) {
+    @Transactional
+    public DealerPriorityLog addPriorityLog(DealerPriorityLog dealerPriorityLog) {
         // Fetch the Dealer using the dealer from DealerPriorityLog
         Dealer dealer = dealerPriorityLog.getDealer();
         if (dealer == null || dealerRepository.findById(dealer.getUserId()).isEmpty()) {

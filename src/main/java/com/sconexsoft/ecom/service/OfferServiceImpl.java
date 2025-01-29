@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.sconexsoft.ecom.entity.Offer;
 import com.sconexsoft.ecom.repo.OfferRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class OfferServiceImpl implements OfferService {
 
@@ -26,16 +28,19 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
+    @Transactional
     public Offer addOffer(Offer offer) {
         return offerRepo.save(offer);
     }
 
     @Override
+    @Transactional
     public Offer updateOffer(Offer offer) {
         return offerRepo.save(offer);
     }
 
     @Override
+    @Transactional
     public boolean deleteOffer(Long id) {
         if (offerRepo.existsById(id)) {
             offerRepo.deleteById(id);

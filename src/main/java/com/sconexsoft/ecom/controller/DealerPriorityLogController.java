@@ -20,7 +20,7 @@ public class DealerPriorityLogController {
     // Endpoint to create a new priority log
     @PostMapping
     public ResponseEntity<DealerPriorityLog> createPriorityLog(@RequestBody DealerPriorityLog dealerPriorityLog) {
-        DealerPriorityLog createdLog = dealerPriorityServiceLog.createPriorityLog(dealerPriorityLog);
+        DealerPriorityLog createdLog = dealerPriorityServiceLog.addPriorityLog(dealerPriorityLog);
         return new ResponseEntity<>(createdLog, HttpStatus.CREATED);
     }
 

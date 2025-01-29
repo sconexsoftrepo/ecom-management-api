@@ -1,11 +1,14 @@
 package com.sconexsoft.ecom.service;
 
-import com.sconexsoft.ecom.entity.ProductOutStockTran;
-import com.sconexsoft.ecom.repo.ProductOutStockTranRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.sconexsoft.ecom.entity.ProductOutStockTran;
+import com.sconexsoft.ecom.repo.ProductOutStockTranRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class ProductOutStockTranServiceImpl implements ProductOutStockTranService {
@@ -14,7 +17,8 @@ public class ProductOutStockTranServiceImpl implements ProductOutStockTranServic
     private ProductOutStockTranRepository productOutStockTranRepository;
 
     @Override
-    public ProductOutStockTran createProductOutStockTran(ProductOutStockTran productOutStockTran) {
+    @Transactional
+    public ProductOutStockTran addProductOutStockTran(ProductOutStockTran productOutStockTran) {
         return productOutStockTranRepository.save(productOutStockTran);
     }
 
@@ -30,6 +34,7 @@ public class ProductOutStockTranServiceImpl implements ProductOutStockTranServic
     }
 
     @Override
+    @Transactional
     public ProductOutStockTran updateProductOutStockTran(ProductOutStockTran productOutStockTran) {
         if (!productOutStockTranRepository.existsById(productOutStockTran.getTranId())) {
             throw new RuntimeException("Transaction not found with ID: " + productOutStockTran.getTranId());
@@ -38,6 +43,7 @@ public class ProductOutStockTranServiceImpl implements ProductOutStockTranServic
     }
 
     @Override
+    @Transactional
     public void deleteProductOutStockTran(Long tranId) {
         if (!productOutStockTranRepository.existsById(tranId)) {
             throw new RuntimeException("Transaction not found with ID: " + tranId);

@@ -26,7 +26,7 @@ public class ShippingZoneServiceImpl implements ShippingZoneService{
     }
 
     // Create or update a zone
-    public ShippingZone saveZone(ShippingZone zone) {
+    public ShippingZone addZone(ShippingZone zone) {
         return repository.save(zone);
     }
 

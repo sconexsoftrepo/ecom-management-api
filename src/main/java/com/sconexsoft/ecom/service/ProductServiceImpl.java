@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.sconexsoft.ecom.entity.Product;
 import com.sconexsoft.ecom.repo.ProductRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class ProductServiceImpl implements ProductService {
 
@@ -26,11 +28,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public Product addProduct(Product product) {
         return productRepo.save(product);
     }
 
     @Override
+    @Transactional
     public Product updateProduct(Product product) {
         if (!productRepo.existsById(product.getProductId())) {
             throw new RuntimeException("Product not found with ID: " + product.getProductId());
@@ -39,6 +43,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public boolean deleteProduct(Long id) {
         if (productRepo.existsById(id)) {
             productRepo.deleteById(id);

@@ -27,7 +27,7 @@ public class ShippingZoneController {
 
     @PostMapping
     public ShippingZone createZone(@RequestBody ShippingZone zone) {
-        return service.saveZone(zone);
+        return service.addZone(zone);
     }
 
     @DeleteMapping("/{id}")

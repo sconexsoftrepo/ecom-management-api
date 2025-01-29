@@ -33,7 +33,7 @@ public class EcomUserController {
 
     // Add a new user
     @PostMapping
-    public ResponseEntity<EcomUser > addUser (@RequestBody EcomUser  user) {
+    public ResponseEntity<EcomUser > createUser (@RequestBody EcomUser  user) {
         EcomUser  createdUser  = userService.addUser (user);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUser );
     }
