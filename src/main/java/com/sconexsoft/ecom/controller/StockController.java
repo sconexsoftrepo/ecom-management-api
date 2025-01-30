@@ -23,7 +23,7 @@ public class StockController {
     // Endpoint to create a ProductInStockTran
     @PostMapping("/in")
     public ResponseEntity<ProductInStockTran> createProductInStock(@RequestBody ProductInStockTran productInStockTran) {
-        ProductInStockTran createdInStock = productInStockTranService.createProductInStockTran(productInStockTran);
+        ProductInStockTran createdInStock = productInStockTranService.addProductInStockTran(productInStockTran);
         return ResponseEntity.ok(createdInStock);
     }
 
@@ -58,7 +58,7 @@ public class StockController {
     // Endpoint to create a ProductOutStockTran
     @PostMapping("/out")
     public ResponseEntity<ProductOutStockTran> createProductOutStock(@RequestBody ProductOutStockTran productOutStockTran) {
-        ProductOutStockTran createdOutStock = productOutStockTranService.createProductOutStockTran(productOutStockTran);
+        ProductOutStockTran createdOutStock = productOutStockTranService.addProductOutStockTran(productOutStockTran);
         return ResponseEntity.ok(createdOutStock);
     }
 

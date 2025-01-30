@@ -10,7 +10,7 @@ public interface ShippingZoneService {
 	
 	public Optional<ShippingZone> getZoneById(int id);
 	
-	public ShippingZone saveZone(ShippingZone zone);
+	public ShippingZone addZone(ShippingZone zone);
 	
 	public void deleteZone(int id);
 }

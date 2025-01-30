@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.sconexsoft.ecom.entity.Dealer;
 import com.sconexsoft.ecom.repo.DealerRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class DealerServiceImpl implements DealerService {
 
@@ -15,7 +17,8 @@ public class DealerServiceImpl implements DealerService {
     private DealerRepository dealerRepository;
 
     @Override
-    public Dealer createDealer(Dealer dealer) {
+    @Transactional
+    public Dealer addDealer(Dealer dealer) {
         return dealerRepository.save(dealer);
     }
 
@@ -31,6 +34,7 @@ public class DealerServiceImpl implements DealerService {
     }
 
     @Override
+    @Transactional
     public Dealer updateDealer(int dealerId, Dealer dealer) {
         Dealer existingDealer = dealerRepository.findById(dealerId)
                 .orElseThrow(() -> new RuntimeException("Dealer not found with ID: " + dealerId));
@@ -44,6 +48,7 @@ public class DealerServiceImpl implements DealerService {
     }
 
     @Override
+    @Transactional
     public void deleteDealer(int dealerId) {
         if (!dealerRepository.existsById(dealerId)) {
             throw new RuntimeException("Dealer not found with ID: " + dealerId);

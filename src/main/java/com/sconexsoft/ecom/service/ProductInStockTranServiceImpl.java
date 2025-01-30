@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.sconexsoft.ecom.entity.ProductInStockTran;
 import com.sconexsoft.ecom.repo.ProductInStockTranRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class ProductInStockTranServiceImpl implements ProductInStockTranService {
 
@@ -15,7 +17,8 @@ public class ProductInStockTranServiceImpl implements ProductInStockTranService 
     private ProductInStockTranRepository productInStockTranRepository;
 
     @Override
-    public ProductInStockTran createProductInStockTran(ProductInStockTran productInStockTran) {
+    @Transactional
+    public ProductInStockTran addProductInStockTran(ProductInStockTran productInStockTran) {
         return productInStockTranRepository.save(productInStockTran);
     }
 
@@ -31,6 +34,7 @@ public class ProductInStockTranServiceImpl implements ProductInStockTranService 
     }
 
     @Override
+    @Transactional
     public ProductInStockTran updateProductInStockTran(ProductInStockTran productInStockTran) {
         if (!productInStockTranRepository.existsById(productInStockTran.getTranId())) {
             throw new RuntimeException("Transaction not found with ID: " + productInStockTran.getTranId());
@@ -39,6 +43,7 @@ public class ProductInStockTranServiceImpl implements ProductInStockTranService 
     }
 
     @Override
+    @Transactional
     public void deleteProductInStockTran(Long tranId) {
         if (!productInStockTranRepository.existsById(tranId)) {
             throw new RuntimeException("Transaction not found with ID: " + tranId);

@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface DealerService {
 
-    Dealer createDealer(Dealer dealer);
+    Dealer addDealer(Dealer dealer);
     
     Dealer getDealerById(int dealerId);
     

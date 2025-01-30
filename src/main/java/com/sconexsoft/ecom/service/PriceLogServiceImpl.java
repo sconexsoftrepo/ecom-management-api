@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.sconexsoft.ecom.entity.PriceLog;
 import com.sconexsoft.ecom.repo.PriceLogRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class PriceLogServiceImpl implements PriceLogService {
 
@@ -26,11 +28,13 @@ public class PriceLogServiceImpl implements PriceLogService {
     }
 
     @Override
+    @Transactional
     public PriceLog addPriceLog(PriceLog priceLog) {
         return priceLogRepository.save(priceLog);
     }
 
     @Override
+    @Transactional
     public PriceLog updatePriceLog(PriceLog priceLog) {
         if (!priceLogRepository.existsById(priceLog.getLogId())) {
             throw new RuntimeException("PriceLog not found with ID: " + priceLog.getLogId());
@@ -39,6 +43,7 @@ public class PriceLogServiceImpl implements PriceLogService {
     }
 
     @Override
+    @Transactional
     public boolean deletePriceLog(Long id) {
         if (!priceLogRepository.existsById(id)) {
             throw new RuntimeException("PriceLog not found with ID: " + id);

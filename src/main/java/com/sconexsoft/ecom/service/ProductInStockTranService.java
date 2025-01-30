@@ -6,7 +6,7 @@ import java.util.List;
 public interface ProductInStockTranService {
 
     // Create a new product stock transaction
-    ProductInStockTran createProductInStockTran(ProductInStockTran productInStockTran);
+    ProductInStockTran addProductInStockTran(ProductInStockTran productInStockTran);
 
     // Get a product stock transaction by its ID
     ProductInStockTran getProductInStockTranById(Long tranId);

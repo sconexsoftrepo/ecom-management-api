@@ -19,7 +19,7 @@ public class DealerController {
     // Create a new dealer
     @PostMapping
     public ResponseEntity<Dealer> createDealer(@RequestBody Dealer dealer) {
-        Dealer createdDealer = dealerService.createDealer(dealer);
+        Dealer createdDealer = dealerService.addDealer(dealer);
         return new ResponseEntity<>(createdDealer, HttpStatus.CREATED);
     }
 
